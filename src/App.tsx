@@ -5,6 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import StartScreen from "./components/StartScreen";
+import ModeSelection from "./components/ModeSelection";
+import DepthSelection from "./components/DepthSelection";
+import ConversationScreen from "./components/ConversationScreen";
+import EndScreen from "./components/EndScreen";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +20,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<StartScreen />} />
+          <Route path="/mode" element={<ModeSelection />} />
+          <Route path="/depth" element={<DepthSelection />} />
+          <Route path="/conversation" element={<ConversationScreen />} />
+          <Route path="/end" element={<EndScreen />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
