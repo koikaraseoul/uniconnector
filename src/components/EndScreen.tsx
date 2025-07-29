@@ -5,23 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const EndScreen = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const mode = searchParams.get('mode') || 'friend';
   const depth = searchParams.get('depth') || '5';
-
-  const messages = {
-    date: {
-      title: "Beautiful Connection Created ✨",
-      subtitle: "Thank you for sharing this intimate space together",
-      reflection: "The deepest connections happen when we're brave enough to be seen and curious enough to truly see another."
-    },
-    friend: {
-      title: "Friendship Deepened 🤝",
-      subtitle: "Thank you for creating this meaningful space together",
-      reflection: "True friendship grows in the soil of honest conversation and mutual appreciation."
-    }
-  };
-
-  const currentMessage = messages[mode as keyof typeof messages] || messages.friend;
 
   return (
     <div className="min-h-screen bg-safety-gradient flex items-center justify-center p-6">
@@ -32,10 +16,10 @@ const EndScreen = () => {
             <Sparkles className="w-6 h-6 text-soft-green" />
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-3">
-            {currentMessage.title}
+            Beautiful Connection Created ✨
           </h1>
           <p className="text-lg text-muted-foreground mb-6">
-            {currentMessage.subtitle}
+            Thank you for sharing this meaningful space together
           </p>
         </div>
 
@@ -48,13 +32,13 @@ const EndScreen = () => {
               Connection Complete
             </h3>
             <p className="text-sm text-muted-foreground italic leading-relaxed">
-              "{currentMessage.reflection}"
+              "The deepest connections happen when we're brave enough to be seen and curious enough to truly see another."
             </p>
           </div>
 
           <div className="text-xs text-muted-foreground bg-muted/50 rounded-lg p-3">
             <p>
-              You just completed {depth} questions in {mode === 'date' ? 'date' : 'friend'} mode.
+              You just completed {depth} meaningful questions together.
               <br />
               Each conversation creates new pathways for understanding.
             </p>
@@ -74,7 +58,7 @@ const EndScreen = () => {
 
           <Button 
             variant="gentle" 
-            onClick={() => navigate(`/depth?mode=${mode}`)}
+            onClick={() => navigate('/depth')}
             className="w-full"
           >
             <span>Try Different Depth</span>

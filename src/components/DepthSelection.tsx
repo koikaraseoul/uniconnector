@@ -4,8 +4,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 const DepthSelection = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const mode = searchParams.get('mode') || 'friend';
 
   const depthOptions = [
     {
@@ -35,7 +33,7 @@ const DepthSelection = () => {
   ];
 
   const handleDepthSelect = (depth: number) => {
-    navigate(`/conversation?mode=${mode}&depth=${depth}`);
+    navigate(`/conversation?depth=${depth}`);
   };
 
   return (
@@ -45,7 +43,7 @@ const DepthSelection = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate('/mode')}
+            onClick={() => navigate('/')}
             className="mb-4"
           >
             <ArrowLeft className="w-4 h-4" />

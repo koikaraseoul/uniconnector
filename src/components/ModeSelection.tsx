@@ -26,7 +26,7 @@ const ModeSelection = () => {
             Choose Your Connection Style
           </h2>
           <p className="text-muted-foreground">
-            Different modes create different conversation rhythms
+            Each style creates a unique conversation rhythm and energy
           </p>
         </div>
 

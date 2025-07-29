@@ -7,11 +7,11 @@ import { getQuestionsForSession, getStageInfo, Question } from "@/data/questions
 const ConversationScreen = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const mode = (searchParams.get('mode') || 'friend') as 'date' | 'friend';
   const depth = parseInt(searchParams.get('depth') || '5') as 5 | 10 | 15;
   
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [questions] = useState<Question[]>(() => getQuestionsForSession(mode, depth));
+  const [questionSet] = useState(() => getQuestionsForSession(depth));
+  const questions = questionSet.questions;
   
   const currentQuestion = questions[currentIndex];
   const progress = ((currentIndex + 1) / questions.length) * 100;
@@ -21,7 +21,7 @@ const ConversationScreen = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      navigate(`/end?mode=${mode}&depth=${depth}`);
+      navigate(`/end?depth=${depth}`);
     }
   };
 
@@ -44,7 +44,7 @@ const ConversationScreen = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate(`/depth?mode=${mode}`)}
+              onClick={() => navigate('/depth')}
             >
               <ArrowLeft className="w-4 h-4" />
               Back
@@ -76,7 +76,7 @@ const ConversationScreen = () => {
               {stageInfo.description}
             </h3>
             <h2 className="text-2xl font-semibold text-foreground leading-relaxed">
-              {mode === 'date' ? currentQuestion.dateVersion : currentQuestion.friendVersion}
+              {currentQuestion.text}
             </h2>
           </div>
 

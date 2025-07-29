@@ -28,7 +28,7 @@ const StartScreen = () => {
           <Button 
             variant="connection" 
             size="lg" 
-            onClick={() => navigate('/mode')}
+            onClick={() => navigate('/depth')}
             className="w-full group"
           >
             <span>Start a Conversation</span>

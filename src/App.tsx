@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StartScreen from "./components/StartScreen";
-import ModeSelection from "./components/ModeSelection";
 import DepthSelection from "./components/DepthSelection";
 import ConversationScreen from "./components/ConversationScreen";
 import EndScreen from "./components/EndScreen";
@@ -21,7 +20,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartScreen />} />
-          <Route path="/mode" element={<ModeSelection />} />
           <Route path="/depth" element={<DepthSelection />} />
           <Route path="/conversation" element={<ConversationScreen />} />
           <Route path="/end" element={<EndScreen />} />
